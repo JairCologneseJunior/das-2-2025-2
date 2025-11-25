@@ -81,48 +81,65 @@ Controle de Acesso (RBAC x ABAC)
 Controle de acesso define quem pode interagir com recursos em um sistema.
 
 RBAC (Controle de Acesso Baseado em Papéis):
-
 Permissões ligadas a Papéis (Roles). O usuário recebe um Papel, e o Papel tem as permissões.
-
 Vantagem: Fácil de gerenciar e escalar.
-
 Exemplo: "Gerente de RH" tem permissão para editar salários.
-
 ABAC (Controle de Acesso Baseado em Atributos):
-
-As decisões de acesso são baseadas em múltiplos atributos (do usuário, do recurso, da hora, da localização, etc.).
-
+As deisões de acesso são baseadas em múltiplos atributos (do usuário, do recurso, da hora, da localização, etc.).
 Vantagem: Oferece controle muito mais granular e flexível.
-
 Exemplo: Um "Funcionário" pode acessar um arquivo "Confidencial" APENAS se for "Dia de Semana" E o acesso for do "IP da Matriz".
 
 Identidade Federada
 Permite que um usuário use as mesmas credenciais para acessar múltiplos serviços ou aplicações que pertencem a diferentes domínios/organizações.
-
 É o princípio por trás do SSO (Single Sign-On), onde você faz login uma vez e acessa várias ferramentas.
-
 A confiança é estabelecida entre o Provedor de Identidade (IdP) e o Provedor de Serviço (SP) usando padrões como SAML ou OpenID Connect.
-
 Benefício: Reduz o número de senhas que o usuário precisa gerenciar, melhorando a segurança e a experiência.
 
 Detecção de Vulnerabilidade Estática (SAST)
 Método de análise que inspeciona o código-fonte de uma aplicação sem executá-la.
-
 Procura por falhas de programação, configurações inseguras e padrões de código que levam a vulnerabilidades de segurança (ex: buffers overflows, injeção de código).
-
 Faz parte da metodologia "Shift Left", pois identifica problemas cedo no ciclo de vida de desenvolvimento (SDLC).
-
 Detecção de Intrusão (IDS)
 Sistema projetado para monitorar o tráfego de rede ou a atividade do host em busca de sinais de atividades maliciosas ou suspeitas.
-
 NIDS (Network-based): Monitora o tráfego de rede.
-
 HIDS (Host-based): Monitora arquivos de log e sistema em máquinas específicas.
-
 Métodos:
-
 Assinaturas: Identifica ataques que correspondem a padrões conhecidos.
-
 Anomalias: Identifica desvios do comportamento normal do sistema.
-
 Função: O IDS ALERTA sobre a intrusão, mas não a impede (diferentemente do IPS - Intrusion Prevention System).
+
+15/10
+Métricas
+Definição: Dados numéricos coletados em intervalos regulares que representam a saúde e o desempenho de um sistema, aplicação ou infraestrutura.
+Para que servem: Permitem criar gráficos (dashboards) e alertas para acompanhar o estado do sistema em tempo real e ao longo do tempo.
+Tipos Comuns:
+Utilização: Uso de CPU, Memória, Disco.
+Latência: Tempo que leva para um serviço responder.
+Taxa de Erro: Porcentagem de requisições que falharam.
+Ferramentas: Prometheus, Grafana, CloudWatch.
+
+Logs
+Definição: Registros de texto (eventos discretos) gerados por uma aplicação ou sistema sempre que algo significativo acontece (ex: início de sessão, erro de banco de dados, falha na autenticação).
+Para ue servem: Essenciais para a depuração (debugging) e auditoria. Ao contrário das métricas, os logs fornecem o contexto detalhado de um evento específico.
+Desafio: O volume de logs pode ser gigantesco. Requerem sistemas de agregação e busca centralizada para serem úteis.
+Ferramentas: ELK Stack (Elasticsearch, Logstash, Kibana), Splunk.
+
+Elasticidade
+Definição: A capacidade de um sistema aumentar e diminuir automaticamente seus recursos computacionais sob demanda.
+Natureza: É a resposta automática e dinâmica a picos ou quedas de tráfego.
+Objetivo: Garantir que haja sempre capacidade suficiente para lidar com a carga, ao mesmo tempo em que se minimiza o custo (só pagar pelo que está sendo usado).
+Exemplo: Quando o tráfego aumenta muito, o sistema adiciona novos servidores em segundos; quando o tráfego cai, ele encerra os servidores excedentes.
+
+Escalabilidade Horizontal (Scale-Out)
+Definição: Aumentar a capacidade do sistema adicionando mais máquinas/servidores à sua infraestrutura.
+Filosofia: Distribuir a carga de trabalho por muitas unidades.
+Vantagem: Oferece escalabilidade quase ilimitada e alta disponibilidade (se um servidor falhar, os outros continuam funcionando). É o modelo preferido em arquiteturas de nuvem.
+Contraste (Escalabilidade Vertical): A vertical (Scale-Up) aumenta a capacidade de uma única máquina (ex: adicionando mais RAM ou CPU).
+
+Balanceador de Carga (Load Balancer)
+Definição: Um dispositivo (hardware ou software) que atua como ponto de entrada único e distribui de forma inteligente as requisições de tráfego de rede entre um grupo de servidores (o server pool).
+Funções Primárias:
+Distribuição de Carga: Impede que um único servidor fique sobrecarregado.
+Verificação de Saúde (Health Check): Direciona o tráfego apenas para os servidores que estão operacionais.
+Alta Disponibilidade: Garante que a aplicação continue funcionando mesmo que um servidor falhe.
+Algoritmos Comuns: Round Robin (distribui sequencialmente), Least Connections (envia para o servidor com menos conexões ativas).
