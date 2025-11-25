@@ -74,3 +74,55 @@ placement strategies
 cluster: baixa latência (instâncias juntas no mesmo rack) / (não tem alta disponibilidade)
 partition: para aplicações que precisam de tolerância a falhas entre partições, como big data, em diferentes racks.
 spread: alta disponibilidade (instâncias em diferentes racks) / (perde perfomece, latencia)
+
+
+Aula 08/10
+Controle de Acesso (RBAC x ABAC)
+Controle de acesso define quem pode interagir com recursos em um sistema.
+
+RBAC (Controle de Acesso Baseado em Papéis):
+
+Permissões ligadas a Papéis (Roles). O usuário recebe um Papel, e o Papel tem as permissões.
+
+Vantagem: Fácil de gerenciar e escalar.
+
+Exemplo: "Gerente de RH" tem permissão para editar salários.
+
+ABAC (Controle de Acesso Baseado em Atributos):
+
+As decisões de acesso são baseadas em múltiplos atributos (do usuário, do recurso, da hora, da localização, etc.).
+
+Vantagem: Oferece controle muito mais granular e flexível.
+
+Exemplo: Um "Funcionário" pode acessar um arquivo "Confidencial" APENAS se for "Dia de Semana" E o acesso for do "IP da Matriz".
+
+Identidade Federada
+Permite que um usuário use as mesmas credenciais para acessar múltiplos serviços ou aplicações que pertencem a diferentes domínios/organizações.
+
+É o princípio por trás do SSO (Single Sign-On), onde você faz login uma vez e acessa várias ferramentas.
+
+A confiança é estabelecida entre o Provedor de Identidade (IdP) e o Provedor de Serviço (SP) usando padrões como SAML ou OpenID Connect.
+
+Benefício: Reduz o número de senhas que o usuário precisa gerenciar, melhorando a segurança e a experiência.
+
+Detecção de Vulnerabilidade Estática (SAST)
+Método de análise que inspeciona o código-fonte de uma aplicação sem executá-la.
+
+Procura por falhas de programação, configurações inseguras e padrões de código que levam a vulnerabilidades de segurança (ex: buffers overflows, injeção de código).
+
+Faz parte da metodologia "Shift Left", pois identifica problemas cedo no ciclo de vida de desenvolvimento (SDLC).
+
+Detecção de Intrusão (IDS)
+Sistema projetado para monitorar o tráfego de rede ou a atividade do host em busca de sinais de atividades maliciosas ou suspeitas.
+
+NIDS (Network-based): Monitora o tráfego de rede.
+
+HIDS (Host-based): Monitora arquivos de log e sistema em máquinas específicas.
+
+Métodos:
+
+Assinaturas: Identifica ataques que correspondem a padrões conhecidos.
+
+Anomalias: Identifica desvios do comportamento normal do sistema.
+
+Função: O IDS ALERTA sobre a intrusão, mas não a impede (diferentemente do IPS - Intrusion Prevention System).
